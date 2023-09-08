@@ -104,6 +104,7 @@ const NavBar = ({
                             outline: "none",
                             border: "none",
                             boxShadow: "none",
+                            backgroundColor: "transparent",
                             lineHeight: "2em",
                             fontWeight: "normal",
                             "&:hover": BUTTON_ACTIVE_STYLE,
