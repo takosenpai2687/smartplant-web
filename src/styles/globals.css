@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-    /* Light Green 700 */
-    --primary-color: #7cb342;
-    --primary-color-deep: #388e3c;
+    /* Light Green 400 */
+    --primary-color: #9ccc65;
+    --primary-color-deep: #4caf50;
+    --primary-font-color: #61666d;
 }
 
 html,
@@ -28,7 +29,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #333;
+    color: var(--primary-font-color);
     padding: 0;
     margin: 0;
 }

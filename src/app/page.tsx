@@ -1,65 +1,62 @@
-"use client";
+import DataCard from "@/components/datacard";
+import LineChart from "@/components/linechart";
+import { Icon, Typography } from "@mui/material";
 
-import {
-    CategoryScale,
-    Chart as ChartJS,
-    Legend,
-    LineElement,
-    LinearScale,
-    PointElement,
-    Title,
-    Tooltip,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-);
-
-const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: "top" as const,
-        },
-        title: {
-            display: true,
-            text: "Chart.js Line Chart",
-        },
-    },
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-const data = {
-    labels,
-    datasets: [
-        {
-            label: "Dataset 1",
-            data: labels.map(() => Math.random() * 1000),
-            borderColor: "rgb(255, 99, 132)",
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-        },
-        {
-            label: "Dataset 2",
-            data: labels.map(() => Math.random() * 1000),
-            borderColor: "rgb(53, 162, 235)",
-            backgroundColor: "rgba(53, 162, 235, 0.5)",
-        },
-    ],
-};
-
-export default function Home() {
+export default async function Home() {
+    const deviceName = "DEVICE_NAME_123";
+    const lastUpdated = new Date();
     return (
         <div>
-            home
-            <Line options={options} data={data} />
+            {/* Header */}
+            <Typography sx={{ fontWeight: "bold" }} variant="h5" component="h5">
+                # Dashboard
+            </Typography>
+            {/* Device */}
+            <Typography
+                component="h6"
+                variant="h6"
+                className="text-center font-bold my-4"
+            >
+                {deviceName}
+            </Typography>
+            {/* Last Updated */}
+            <Typography
+                component="p"
+                className="text-center font-bold my-4 italic"
+            >
+                Last Updated: {lastUpdated.toLocaleDateString()}
+            </Typography>
+            {/* Cards */}
+            <div className="flex flex-row items-center justify-evenly gap-4">
+                <DataCard
+                    title="Temperature"
+                    icon="device_thermostat"
+                    dataText={"16 ℃"}
+                    percentage={25}
+                    className="w-1/3"
+                    color="#F06292"
+                />
+                <DataCard
+                    title="Humidity"
+                    icon="water_drop"
+                    dataText={"50%"}
+                    percentage={50}
+                    className="w-1/3"
+                    color="#29B6F6"
+                />
+                <DataCard
+                    title="Light"
+                    icon="sunny"
+                    color="#FFD54F"
+                    dataText={"75%"}
+                    percentage={75}
+                    className="w-1/3"
+                />
+            </div>
+            {/* Chart */}
+            <div className="px-4 my-4">
+                <LineChart className="px-4 my-8 mx-auto" />
+            </div>
         </div>
     );
 }

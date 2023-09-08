@@ -1,0 +1,33 @@
+$SIZE: 11em;
+
+.card {
+    position: relative;
+    min-height: $SIZE;
+
+    .progress {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: left;
+        transform: rotateZ("90deg") translate(-50%, -50%) !important;
+        height: calc($SIZE + 16px) !important;
+        width: calc($SIZE + 16px) !important;
+    }
+
+    .circle {
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #333;
+        box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
+        height: $SIZE;
+        width: $SIZE;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+}
