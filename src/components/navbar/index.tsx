@@ -13,6 +13,11 @@ type RouteType = {
 };
 
 const ROUTE_INNER_STYLE = "flex flex-row items-center justify-center gap-2";
+const BUTTON_ACTIVE_STYLE = {
+    backgroundColor: "var(--primary-color-deep)",
+    fontWeight: "bolder",
+    boxShadow: "0 0 8px 1px rgba(0,0,0,0.1) inset",
+};
 
 const ROUTES: RouteType[] = [
     {
@@ -68,7 +73,7 @@ const NavBar = ({
                 <Icon
                     className="flex"
                     style={{
-                        fontSize: "6em",
+                        fontSize: "5.2em",
                         color: "#fff",
                     }}
                 >
@@ -77,7 +82,7 @@ const NavBar = ({
                 <h1
                     className={`${righteous.className} text-white font-bold`}
                     style={{
-                        fontSize: "2.6em",
+                        fontSize: "2.1em",
                         letterSpacing: ".14em",
                     }}
                 >
@@ -95,20 +100,14 @@ const NavBar = ({
                         onClick={() => router.push(route.path)}
                         className={`${activeIdx === idx ? "active" : ""}`}
                         sx={{
-                            padding: "1em",
+                            padding: ".75em .25em",
                             outline: "none",
                             border: "none",
                             boxShadow: "none",
                             lineHeight: "2em",
                             fontWeight: "normal",
-                            "&:hover": {
-                                backgroundColor: "var(--primary-color-deep)",
-                                fontWeight: "bolder",
-                            },
-                            "&.active": {
-                                backgroundColor: "var(--primary-color-deep)",
-                                fontWeight: "bolder",
-                            },
+                            "&:hover": BUTTON_ACTIVE_STYLE,
+                            "&.active": BUTTON_ACTIVE_STYLE,
                             textTransform: "capitalize",
                             letterSpacing: ".1em",
                             fontSize: "1.2em",
