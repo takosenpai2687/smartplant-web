@@ -76,7 +76,7 @@ export const data = {
 };
 
 const LineChart = ({ className }: { className?: string }) => {
-    return <Line options={options} data={data} className={className ?? ""} />;
+    return <Line options={options} data={data} className={`${className ?? ""} w-full h-full`} />;
 };
 
 export default LineChart;
