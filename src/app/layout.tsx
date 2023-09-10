@@ -27,6 +27,7 @@ export default function RootLayout({
                     rel="stylesheet"
                     href="https://fonts.googleapis.com/icon?family=Material+Icons"
                 />
+                <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
             </head>
             <body
                 className={`${roboto.className} h-full w-full flex flex-row justify-between items-center mx-auto`}
