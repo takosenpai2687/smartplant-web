@@ -82,7 +82,7 @@ export const data = {
             yAxisID: "y1",
             cubicInterpolationMode: "monotone",
         },
-    ],
+    ] as any[],
 };
 
 const LineChart = ({ className }: { className?: string }) => {
