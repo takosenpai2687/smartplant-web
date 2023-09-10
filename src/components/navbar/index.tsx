@@ -23,7 +23,8 @@ const ROUTES: RouteType[] = [
     {
         render: (
             <div className={ROUTE_INNER_STYLE}>
-                <Icon className="text-white">speed</Icon> Dashboard
+                <Icon className="text-white">speed</Icon>
+                <span className="text-white">Dashboard</span>
             </div>
         ),
         path: "/",
@@ -31,7 +32,8 @@ const ROUTES: RouteType[] = [
     {
         render: (
             <div className={ROUTE_INNER_STYLE}>
-                <Icon className="text-white">grid_view</Icon> Devices
+                <Icon className="text-white">grid_view</Icon>
+                <span className="text-white">Devices</span>
             </div>
         ),
         path: "/devices",
@@ -39,7 +41,8 @@ const ROUTES: RouteType[] = [
     {
         render: (
             <div className={ROUTE_INNER_STYLE}>
-                <Icon className="text-white">link</Icon> Link
+                <Icon className="text-white">link</Icon>
+                <span className="text-white">Link</span>
             </div>
         ),
         path: "/link",
