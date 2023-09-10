@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -76,7 +76,13 @@ export const data = {
 };
 
 const LineChart = ({ className }: { className?: string }) => {
-    return <Line options={options} data={data} className={`${className ?? ""} w-full h-full`} />;
+    return (
+        <Line
+            options={options}
+            data={data}
+            className={`${className ?? ""} w-full h-full`}
+        />
+    );
 };
 
-export default LineChart;
+export default memo(LineChart);
