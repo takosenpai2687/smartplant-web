@@ -53,24 +53,34 @@ export const options = {
     },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+const labels = Array.from({ length: 15 }, (_, i) => `Day ${i + 1}`);
 
 export const data = {
     labels,
     datasets: [
         {
-            label: "Dataset 1",
+            label: "Light",
             data: labels.map(() => Math.floor(Math.random() * 1000)),
-            borderColor: "rgb(255, 99, 132)",
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            borderColor: "#FFD54F",
+            backgroundColor: "#FFD54F7F",
             yAxisID: "y",
+            cubicInterpolationMode: "monotone",
         },
         {
-            label: "Dataset 2",
+            label: "Temperature",
             data: labels.map(() => Math.floor(Math.random() * 1000)),
-            borderColor: "rgb(53, 162, 235)",
-            backgroundColor: "rgba(53, 162, 235, 0.5)",
+            borderColor: "#F06292",
+            backgroundColor: "#F062927F",
             yAxisID: "y1",
+            cubicInterpolationMode: "monotone",
+        },
+        {
+            label: "Humidity",
+            data: labels.map(() => Math.floor(Math.random() * 1000)),
+            borderColor: "#29B6F6",
+            backgroundColor: "#29B6F67F",
+            yAxisID: "y1",
+            cubicInterpolationMode: "monotone",
         },
     ],
 };

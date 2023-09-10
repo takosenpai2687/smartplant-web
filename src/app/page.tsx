@@ -29,6 +29,14 @@ export default async function Home() {
             {/* Cards */}
             <div className="flex flex-row items-center justify-evenly gap-4">
                 <DataCard
+                    title="Light"
+                    icon="sunny"
+                    color="#FFD54F"
+                    dataText={"75%"}
+                    percentage={75}
+                    className="w-1/3"
+                />
+                <DataCard
                     title="Temperature"
                     icon="device_thermostat"
                     dataText={"16 ℃"}
@@ -43,14 +51,6 @@ export default async function Home() {
                     percentage={50}
                     className="w-1/3"
                     color="#29B6F6"
-                />
-                <DataCard
-                    title="Light"
-                    icon="sunny"
-                    color="#FFD54F"
-                    dataText={"75%"}
-                    percentage={75}
-                    className="w-1/3"
                 />
             </div>
             {/* Chart */}
