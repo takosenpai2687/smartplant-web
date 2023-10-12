@@ -60,7 +60,7 @@ export const data = {
     datasets: [
         {
             label: "Light",
-            data: labels.map(() => Math.floor(Math.random() * 1000)),
+            data: labels.map(() => Math.floor(Math.random() * 100)),
             borderColor: "#FFD54F",
             backgroundColor: "#FFD54F7F",
             yAxisID: "y",
@@ -68,7 +68,7 @@ export const data = {
         },
         // {
         //     label: "Temperature",
-        //     data: labels.map(() => Math.floor(Math.random() * 1000)),
+        //     data: labels.map(() => Math.floor(Math.random() * 100)),
         //     borderColor: "#F06292",
         //     backgroundColor: "#F062927F",
         //     yAxisID: "y1",
@@ -76,7 +76,7 @@ export const data = {
         // },
         {
             label: "Humidity",
-            data: labels.map(() => Math.floor(Math.random() * 1000)),
+            data: labels.map(() => Math.floor(Math.random() * 100)),
             borderColor: "#29B6F6",
             backgroundColor: "#29B6F67F",
             yAxisID: "y1",
