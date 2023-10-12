@@ -66,14 +66,14 @@ export const data = {
             yAxisID: "y",
             cubicInterpolationMode: "monotone",
         },
-        {
-            label: "Temperature",
-            data: labels.map(() => Math.floor(Math.random() * 1000)),
-            borderColor: "#F06292",
-            backgroundColor: "#F062927F",
-            yAxisID: "y1",
-            cubicInterpolationMode: "monotone",
-        },
+        // {
+        //     label: "Temperature",
+        //     data: labels.map(() => Math.floor(Math.random() * 1000)),
+        //     borderColor: "#F06292",
+        //     backgroundColor: "#F062927F",
+        //     yAxisID: "y1",
+        //     cubicInterpolationMode: "monotone",
+        // },
         {
             label: "Humidity",
             data: labels.map(() => Math.floor(Math.random() * 1000)),
