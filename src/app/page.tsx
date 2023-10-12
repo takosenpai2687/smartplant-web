@@ -34,22 +34,22 @@ export default async function Home() {
                     color="#FFD54F"
                     dataText={"75%"}
                     percentage={75}
-                    className="w-1/3"
+                    className="w-1/2"
                 />
-                <DataCard
+                {/* <DataCard
                     title="Temperature"
                     icon="device_thermostat"
                     dataText={"16 ℃"}
                     percentage={25}
-                    className="w-1/3"
+                    className="w-1/2"
                     color="#F06292"
-                />
+                /> */}
                 <DataCard
                     title="Humidity"
                     icon="water_drop"
                     dataText={"50%"}
                     percentage={50}
-                    className="w-1/3"
+                    className="w-1/2"
                     color="#29B6F6"
                 />
             </div>
