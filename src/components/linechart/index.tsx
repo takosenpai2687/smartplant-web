@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo } from "react";
+import React, { memo, useEffect, useMemo } from "react";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -12,6 +12,7 @@ import {
     Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import axios from "axios";
 
 ChartJS.register(
     CategoryScale,
@@ -53,39 +54,8 @@ export const options = {
     },
 };
 
-const labels = Array.from({ length: 15 }, (_, i) => `Day ${i + 1}`);
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: "Light",
-            data: labels.map(() => Math.floor(Math.random() * 100)),
-            borderColor: "#FFA629",
-            backgroundColor: "#FFA6297F",
-            yAxisID: "y",
-            cubicInterpolationMode: "monotone",
-        },
-        // {
-        //     label: "Temperature",
-        //     data: labels.map(() => Math.floor(Math.random() * 100)),
-        //     borderColor: "#F06292",
-        //     backgroundColor: "#F062927F",
-        //     yAxisID: "y1",
-        //     cubicInterpolationMode: "monotone",
-        // },
-        {
-            label: "Moisture",
-            data: labels.map(() => Math.floor(Math.random() * 100)),
-            borderColor: "#EE0606",
-            backgroundColor: "#EE06067F",
-            yAxisID: "y1",
-            cubicInterpolationMode: "monotone",
-        },
-    ] as any[],
-};
-
-const LineChart = ({ className }: { className?: string }) => {
+const LineChart = ({ className, data }: { className?: string; data: any }) => {
     return (
         <Line
             options={options}
