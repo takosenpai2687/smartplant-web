@@ -5,8 +5,8 @@
 :root {
     /* Light Green 400 */
     --primary-color: #9ccc65;
-    --primary-color-deep: #4caf50;
-    --primary-font-color: #61666d;
+    --primary-color-deep: #026b39;
+    --primary-font-color: #000;
 }
 
 html,
@@ -17,7 +17,7 @@ body {
 
 * {
     box-sizing: border-box;
-    font-family: "Roboto";
+    @apply font-lato;
 }
 
 a,

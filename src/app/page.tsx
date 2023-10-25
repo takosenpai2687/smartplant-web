@@ -1,61 +1,50 @@
 import DataCard from "@/components/datacard";
 import LineChart from "@/components/linechart";
-import { Icon, Typography } from "@mui/material";
 
 export default async function Home() {
-    const deviceName = "DEVICE_NAME_123";
-    const lastUpdated = new Date();
     return (
-        <div>
+        <div className="space-y-8">
             {/* Header */}
-            <Typography sx={{ fontWeight: "bold" }} variant="h5" component="h5">
-                # Dashboard
-            </Typography>
-            {/* Device */}
-            <Typography
-                component="h6"
-                variant="h6"
-                className="text-center font-bold my-4"
-            >
-                {deviceName}
-            </Typography>
-            {/* Last Updated */}
-            <Typography
+            <h5 className="text-2xl font-righteous">Dashboard</h5>
+            {/* Configuration */}
+            <div className="border-b">
+                <h6 className="text-xl font-righteous">Current Status</h6>
+                {/* Last Updated */}
+                {/* <Typography
                 component="p"
                 className="text-center font-bold my-4 italic"
             >
                 Last Updated: {lastUpdated.toLocaleDateString()}
-            </Typography>
-            {/* Cards */}
-            <div className="flex flex-row items-center justify-evenly gap-4">
-                <DataCard
-                    title="Light"
-                    icon="sunny"
-                    color="#FFD54F"
-                    dataText={"75%"}
-                    percentage={75}
-                    className="w-1/2"
-                />
-                {/* <DataCard
-                    title="Temperature"
-                    icon="device_thermostat"
-                    dataText={"16 ℃"}
-                    percentage={25}
-                    className="w-1/2"
-                    color="#F06292"
-                /> */}
-                <DataCard
-                    title="Humidity"
-                    icon="water_drop"
-                    dataText={"50%"}
-                    percentage={50}
-                    className="w-1/2"
-                    color="#29B6F6"
-                />
+            </Typography> */}
+                {/* Cards */}
+                <div className="flex flex-row items-center justify-evenly gap-4">
+                    <DataCard
+                        status="Great"
+                        icon="sunny"
+                        color="#FFA629"
+                        dataText={"75%"}
+                        percentage={75}
+                        className="w-1/2"
+                    />
+
+                    <DataCard
+                        status="Too Dry"
+                        icon="water_drop"
+                        dataText={"50%"}
+                        percentage={50}
+                        className="w-1/2"
+                        color="#EE0606"
+                    />
+                </div>
             </div>
             {/* Chart */}
-            <div className="px-4 my-4">
-                <LineChart className="px-4 my-8 mx-auto" />
+            <div>
+                <h6 className="text-xl font-righteous">
+                    Plant Environment Levels
+                </h6>
+                <div className="px-4">
+                    <LineChart className="px-4 my-8 mx-auto" />
+                </div>
             </div>
         </div>
     );

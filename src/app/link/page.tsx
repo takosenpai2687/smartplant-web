@@ -5,7 +5,7 @@ const Link = () => {
     return (
         <div>
             <Typography sx={{ fontWeight: "bold" }} variant="h5" component="h5">
-                # Link
+                # Configuration
             </Typography>
         </div>
     );

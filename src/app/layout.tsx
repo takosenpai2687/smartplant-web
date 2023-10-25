@@ -1,20 +1,29 @@
 import NavBar from "@/components/navbar";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import "@fontsource/roboto";
+import { Righteous, Lato } from "next/font/google";
+import styles from "./style.module.scss";
+import { CircularProgress } from "@mui/material";
+import { Suspense } from "react";
 
-const roboto = Roboto({
-    weight: ["100", "300", "400", "500", "700", "900"],
+const righteous = Righteous({
     subsets: ["latin"],
+    weight: ["400"],
+    display: "swap",
+    variable: "--font-righteous",
+});
+
+const lato = Lato({
+    subsets: ["latin"],
+    weight: ["100", "300", "400", "700", "900"],
+    display: "swap",
+    variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
     title: "Smart Plant",
     description: "Smart plant web app comp5047",
 };
-
-const NAV_MAX_WIDTH = 320;
 
 export default function RootLayout({
     children,
@@ -31,33 +40,22 @@ export default function RootLayout({
                 <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
             </head>
             <body
-                className={`${roboto.className} h-full w-full flex flex-row justify-between items-center mx-auto`}
-                style={{
-                    backgroundColor: "var(--primary-color)",
-                    maxWidth: "1600px",
-                }}
+                className={`${righteous.variable} ${lato.variable} ${styles.container} h-full w-full`}
             >
-                <NavBar
-                    className="w-1/5"
-                    style={{
-                        maxWidth: `${NAV_MAX_WIDTH}px`,
-                    }}
-                />
+                <NavBar />
+
                 <main
-                    className="w-4/5 h-full overflow-auto p-4"
-                    style={{
-                        minWidth: `calc(100% - ${NAV_MAX_WIDTH}px)`,
-                    }}
+                    className={`${styles.mainContent} h-full w-full overflow-auto mx-auto px-7 pt-12 font-lato`}
                 >
-                    <div
-                        className="w-full h-full overflow-auto rounded-2xl mx-auto p-4"
-                        style={{
-                            backgroundColor: "#fcfcfc",
-                            boxShadow: "0 0 12px 1px rgba(0,0,0,0.2) inset",
-                        }}
+                    <Suspense
+                        fallback={
+                            <div className="h-full w-full flex">
+                                <CircularProgress className="text-primary mx-auto" />
+                            </div>
+                        }
                     >
                         {children}
-                    </div>
+                    </Suspense>
                 </main>
             </body>
         </html>

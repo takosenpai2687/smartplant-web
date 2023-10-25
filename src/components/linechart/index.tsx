@@ -33,7 +33,7 @@ export const options = {
     plugins: {
         title: {
             display: true,
-            text: "Chart.js Line Chart - Multi Axis",
+            text: "Plant Statistics",
         },
     },
     scales: {
@@ -61,8 +61,8 @@ export const data = {
         {
             label: "Light",
             data: labels.map(() => Math.floor(Math.random() * 100)),
-            borderColor: "#FFD54F",
-            backgroundColor: "#FFD54F7F",
+            borderColor: "#FFA629",
+            backgroundColor: "#FFA6297F",
             yAxisID: "y",
             cubicInterpolationMode: "monotone",
         },
@@ -75,10 +75,10 @@ export const data = {
         //     cubicInterpolationMode: "monotone",
         // },
         {
-            label: "Humidity",
+            label: "Moisture",
             data: labels.map(() => Math.floor(Math.random() * 100)),
-            borderColor: "#29B6F6",
-            backgroundColor: "#29B6F67F",
+            borderColor: "#EE0606",
+            backgroundColor: "#EE06067F",
             yAxisID: "y1",
             cubicInterpolationMode: "monotone",
         },

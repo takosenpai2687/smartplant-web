@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 18rem 1fr;
+    grid-template-areas: "nav content aside";
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.mainContent {
+    grid-area: content;
+    overflow-y: auto;
+}

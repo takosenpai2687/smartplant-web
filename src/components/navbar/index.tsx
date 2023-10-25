@@ -1,30 +1,28 @@
 "use client";
-import { Button, Icon } from "@mui/material";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useMemo } from "react";
+import { Button, Icon, CircularProgress } from "@mui/material";
+import { usePathname } from "next/navigation";
+import React, {  useMemo } from "react";
 import styles from "./style.module.scss";
-import { Righteous } from "next/font/google";
-
-const righteous = Righteous({ weight: ["400"], subsets: ["latin"] });
+import Link from "next/link";
 
 type RouteType = {
     render: React.ReactNode | string;
     path: string;
 };
 
-const ROUTE_INNER_STYLE = "flex flex-row items-center justify-center gap-2";
+const ROUTE_INNER_STYLE = "flex flex-row items-center gap-2 text-inherit";
 const BUTTON_ACTIVE_STYLE = {
-    backgroundColor: "var(--primary-color-deep)",
-    fontWeight: "bolder",
-    boxShadow: "0 0 8px 1px rgba(0,0,0,0.1) inset",
+    color: "var(--primary-color-deep) !important",
+    background: "transparent",
+    boxShadow: "none",
 };
 
 const ROUTES: RouteType[] = [
     {
         render: (
             <div className={ROUTE_INNER_STYLE}>
-                <Icon className="text-white">speed</Icon>
-                <span className="text-white">Dashboard</span>
+                <Icon className="text-inherit">multiline_chart</Icon>
+                <span className="text-inherit font-righteous">Dashboard</span>
             </div>
         ),
         path: "/",
@@ -32,20 +30,13 @@ const ROUTES: RouteType[] = [
     {
         render: (
             <div className={ROUTE_INNER_STYLE}>
-                <Icon className="text-white">grid_view</Icon>
-                <span className="text-white">Devices</span>
+                <Icon className="text-inherit">settings</Icon>
+                <span className="text-inherit font-righteous">
+                    Configuration
+                </span>
             </div>
         ),
-        path: "/devices",
-    },
-    {
-        render: (
-            <div className={ROUTE_INNER_STYLE}>
-                <Icon className="text-white">link</Icon>
-                <span className="text-white">Link</span>
-            </div>
-        ),
-        path: "/link",
+        path: "/configuration",
     },
 ];
 
@@ -57,7 +48,6 @@ const NavBar = ({
     style?: React.CSSProperties;
 }) => {
     const pathname = usePathname();
-    const router = useRouter();
 
     const activeIdx: number = useMemo(
         () => ROUTES.findIndex((r) => r.path === pathname),
@@ -66,59 +56,50 @@ const NavBar = ({
 
     return (
         <nav
-            className={`${styles.navbar} h-full ${
+            className={`${styles.navbar} font-righteous h-full ${
                 className ?? ""
-            } flex flex-col bg-transparent`}
+            } flex flex-col bg-primary py-12 px-5`}
             style={{ ...(style ?? {}) }}
         >
             {/* Logo */}
-            <div className="flex flex-col items-center justify-center h-1/4 select-none">
-                <Icon
-                    className="flex"
+            <div className="flex items-center gap-4 select-none">
+                {/* <Icon
+                    className="flex text-white"
                     style={{
-                        fontSize: "5.2em",
-                        color: "#fff",
+                        fontSize: "3em",
                     }}
                 >
                     eco
-                </Icon>
-                <h1
-                    className={`${righteous.className} text-white font-bold`}
-                    style={{
-                        fontSize: "2.1em",
-                        letterSpacing: ".14em",
-                    }}
-                >
+                </Icon> */}
+                <h1 className={`font-righteous text-white text-3xl`}>
                     SmartPlant
                 </h1>
             </div>
             {/* Button Group */}
-            <div className="flex flex-col items-center justify-between gap-4 px-4">
+            <div className="flex flex-col items-center justify-between gap-4 mt-20">
                 {ROUTES.map((route, idx) => (
                     <Button
                         variant="contained"
                         size="large"
                         fullWidth
                         key={route.path}
-                        onClick={() => router.push(route.path)}
                         className={`${activeIdx === idx ? "active" : ""}`}
                         sx={{
-                            padding: ".75em .25em",
+                            padding: 0,
                             outline: "none",
                             border: "none",
                             boxShadow: "none",
                             backgroundColor: "transparent",
-                            lineHeight: "2em",
+                            fontSize: "1.25rem",
                             fontWeight: "normal",
+                            textTransform: "capitalize",
+                            justifyContent: "flex-start",
                             "&:hover": BUTTON_ACTIVE_STYLE,
                             "&.active": BUTTON_ACTIVE_STYLE,
-                            textTransform: "capitalize",
-                            letterSpacing: ".1em",
-                            fontSize: "1.2em",
-                            borderRadius: "6em",
+                            a: { color: "inherit" },
                         }}
                     >
-                        {route.render}
+                        <Link href={route.path}>{route.render}</Link>
                     </Button>
                 ))}
             </div>

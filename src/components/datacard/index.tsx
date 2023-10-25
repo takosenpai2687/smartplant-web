@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import styles from "./style.module.scss";
-import { CircularProgress, Icon, Typography } from "@mui/material";
+import { Box, CircularProgress, Icon, Typography } from "@mui/material";
 
 type DataCardProps = {
     icon: string;
-    title: React.ReactNode | string;
+    status: React.ReactNode | string;
     dataText: React.ReactNode | string | number;
     percentage: number;
     color: string;
@@ -14,7 +14,7 @@ type DataCardProps = {
 
 const DataCard = ({
     icon,
-    title,
+    status,
     dataText,
     className,
     style,
@@ -23,35 +23,48 @@ const DataCard = ({
 }: DataCardProps) => {
     return (
         <div
-            className={`${styles.card} ${className ?? ""} my-8`}
+            className={`${styles.card} ${className ?? ""} my-8 flex`}
             style={style ?? {}}
         >
             <div
                 className={`${styles.circle} flex flex-col justify-center items-center`}
             >
-                <div className={`${styles.icon} text-center`}>
+                <div className={`text-center`}>
                     <Icon style={{ color, fontSize: "3em" }}>{icon}</Icon>
                 </div>
-                <div className="text-center">
-                    <Typography variant="h6" component="h6">
-                        {title}
-                    </Typography>
+                <div className="text-center text-lg">
+                    <p>{status}!</p>
                 </div>
-                <div className="text-center">
+                {/* <div className="text-center">
                     <Typography component="p" className="text-lg">
                         {dataText}
                     </Typography>
-                </div>
+                </div> */}
             </div>
-            <CircularProgress
-                className={`${styles.progress}`}
-                style={{
-                    color,
-                }}
-                thickness={2}
-                variant="determinate"
-                value={percentage}
-            />
+
+            <Box sx={{ position: "relative", margin: "0 auto" }}>
+                <CircularProgress
+                    variant="determinate"
+                    sx={{
+                        color: "#EEEEEE",
+                    }}
+                    thickness={6}
+                    size="11rem"
+                    value={100}
+                />
+                <CircularProgress
+                    variant="determinate"
+                    disableShrink
+                    sx={{
+                        color,
+                        position: "absolute",
+                        left: 0,
+                    }}
+                    thickness={6}
+                    size="11rem"
+                    value={percentage}
+                />
+            </Box>
         </div>
     );
 };
