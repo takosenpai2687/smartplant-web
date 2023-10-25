@@ -35,11 +35,6 @@ const DataCard = ({
                 <div className="text-center text-lg">
                     <p>{status}!</p>
                 </div>
-                {/* <div className="text-center">
-                    <Typography component="p" className="text-lg">
-                        {dataText}
-                    </Typography>
-                </div> */}
             </div>
 
             <Box sx={{ position: "relative", margin: "0 auto" }}>

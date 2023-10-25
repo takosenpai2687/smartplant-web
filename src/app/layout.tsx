@@ -5,6 +5,7 @@ import { Righteous, Lato } from "next/font/google";
 import styles from "./style.module.scss";
 import { CircularProgress } from "@mui/material";
 import { Suspense } from "react";
+import ThemeRegistry from "./ThemeRegistry";
 
 const righteous = Righteous({
     subsets: ["latin"],
@@ -39,25 +40,27 @@ export default function RootLayout({
                 />
                 <link rel="icon" href="/favicon.ico?v=1" sizes="any" />
             </head>
-            <body
-                className={`${righteous.variable} ${lato.variable} ${styles.container} h-full w-full`}
-            >
-                <NavBar />
-
-                <main
-                    className={`${styles.mainContent} h-full w-full overflow-auto mx-auto px-7 pt-12 font-lato`}
+            <ThemeRegistry options={{ key: "mui-theme" }}>
+                <body
+                    className={`${righteous.variable} ${lato.variable} ${styles.container} h-full w-full`}
                 >
-                    <Suspense
-                        fallback={
-                            <div className="h-full w-full flex">
-                                <CircularProgress className="text-primary mx-auto" />
-                            </div>
-                        }
+                    <NavBar />
+
+                    <main
+                        className={`${styles.mainContent} h-full w-full overflow-auto mx-auto px-7 pt-12 font-lato`}
                     >
-                        {children}
-                    </Suspense>
-                </main>
-            </body>
+                        <Suspense
+                            fallback={
+                                <div className="h-full w-full flex">
+                                    <CircularProgress className="text-primary mx-auto" />
+                                </div>
+                            }
+                        >
+                            {children}
+                        </Suspense>
+                    </main>
+                </body>
+            </ThemeRegistry>
         </html>
     );
 }

@@ -4,19 +4,9 @@ import LineChart from "@/components/linechart";
 export default async function Home() {
     return (
         <div className="space-y-8">
-            {/* Header */}
             <h5 className="text-2xl font-righteous">Dashboard</h5>
-            {/* Configuration */}
             <div className="border-b">
                 <h6 className="text-xl font-righteous">Current Status</h6>
-                {/* Last Updated */}
-                {/* <Typography
-                component="p"
-                className="text-center font-bold my-4 italic"
-            >
-                Last Updated: {lastUpdated.toLocaleDateString()}
-            </Typography> */}
-                {/* Cards */}
                 <div className="flex flex-row items-center justify-evenly gap-4">
                     <DataCard
                         status="Great"
