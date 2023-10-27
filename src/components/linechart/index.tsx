@@ -39,21 +39,16 @@ export const options = {
     },
     scales: {
         y: {
-            type: "linear" as const,
             display: true,
-            position: "left" as const,
-        },
-        y1: {
-            type: "linear" as const,
-            display: true,
-            position: "right" as const,
-            grid: {
-                drawOnChartArea: false,
+            title: {
+                display: true,
+                text: "Value",
             },
+            suggestedMin: 0,
+            suggestedMax: 100,
         },
     },
 };
-
 
 const LineChart = ({ className, data }: { className?: string; data: any }) => {
     return (

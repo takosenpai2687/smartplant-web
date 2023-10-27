@@ -24,7 +24,7 @@ const buildData = (
             data: moistures,
             borderColor: "#EE0606",
             backgroundColor: "#EE06067F",
-            yAxisID: "y1",
+            yAxisID: "y",
             cubicInterpolationMode: "monotone",
         },
     ];

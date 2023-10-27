@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
         .sort({ createdAt: 'desc' })
         .limit(Number(limit))
         .exec();
-    return Response.json({ code: 200, message: 'ok', data });
+    return Response.json({ code: 200, message: 'ok', data: data.reverse() });
 }
 
 export async function POST(request: NextRequest) {
