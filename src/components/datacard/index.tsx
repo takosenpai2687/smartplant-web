@@ -49,7 +49,6 @@ const DataCard = ({
                 />
                 <CircularProgress
                     variant="determinate"
-                    disableShrink
                     sx={{
                         color,
                         position: "absolute",
