@@ -5,6 +5,11 @@ import LineChart from "@/components/linechart";
 import axios from "axios";
 import React, { useEffect, useMemo } from "react";
 
+const LIGHT_LOWER = 30;
+const LIGHT_UPPER = 60;
+const MOISTURE_LOWER = 30;
+const MOISTURE_UPPER = 60;
+
 const buildData = (
     lights: number[],
     moistures: number[],
@@ -46,8 +51,6 @@ export default function Home() {
     const [currLight, setCurrLight] = React.useState<number>(0);
     const [currMoist, setCurrMoist] = React.useState<number>(0);
     // TODO: decide how to determine status
-    const [lightStatus, setLightsStatus] = React.useState<string>("Great");
-    const [moistStatus, setMoistStatus] = React.useState<string>("Great");
     const deviceName = "test-oct-27";
 
     const fetchData = async () => {
@@ -56,9 +59,24 @@ export default function Home() {
             .then((r) => r.data.data);
         setLights(data.map((d) => d.light));
         setMoistures(data.map((d) => d.moisture));
-        setCurrLight(data[data.length - 1].light);
-        setCurrMoist(data[data.length - 1].moisture);
-        console.log({ data, moistures });
+        const light = data[data.length - 1].light;
+        const moist = data[data.length - 1].moisture;
+        setCurrLight(light);
+        setCurrMoist(moist);
+        setLightStatus(
+            light > LIGHT_LOWER && light < LIGHT_UPPER
+                ? "Great"
+                : light < LIGHT_LOWER
+                ? "Too Dark"
+                : "Too Bright"
+        );
+        setMoistStatus(
+            moist > MOISTURE_LOWER && moist < MOISTURE_UPPER
+                ? "Great"
+                : moist < MOISTURE_LOWER
+                ? "Too Dry"
+                : "Too Wet"
+        );
     };
 
     const data = {
@@ -71,6 +89,13 @@ export default function Home() {
         return () => clearInterval(fetchDataInt);
     }, []);
 
+    const [lightStatus, setLightStatus] = React.useState<
+        "Great" | "Too Bright" | "Too Dark"
+    >("Too Dark");
+    const [moistStatus, setMoistStatus] = React.useState<
+        "Great" | "Too Dry" | "Too Wet"
+    >("Too Dry");
+
     return (
         <div className="space-y-8">
             <h5 className="text-2xl font-righteous">Dashboard</h5>
@@ -78,7 +103,7 @@ export default function Home() {
                 <h6 className="text-xl font-righteous">Current Status</h6>
                 <div className="flex flex-row items-center justify-evenly gap-4">
                     <DataCard
-                        status="Great"
+                        status={lightStatus}
                         icon="sunny"
                         color="#FFA629"
                         dataText={"75%"}
@@ -87,7 +112,7 @@ export default function Home() {
                     />
 
                     <DataCard
-                        status="Too Dry"
+                        status={moistStatus}
                         icon="water_drop"
                         dataText={"50%"}
                         percentage={currMoist}
