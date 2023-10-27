@@ -1,9 +1,36 @@
-import axios from 'axios'
-import { NextRequest } from 'next/server'
+import dbConnect from "@/lib/dbConnect";
+import Data from "@/models/Data";
+import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
-    const limit = request.nextUrl.searchParams.get('limit')
-    const device = request.nextUrl.searchParams.get('device')
+    const searchParams = request.nextUrl.searchParams;
+    const device = searchParams.get('device');
+    const limit = Number(searchParams.get('limit'));
+    if (!device || isNaN(limit)) {
+        return Response.json({ code: 400, message: "bad request" });
+    }
+    await dbConnect();
+    const data = await Data.find({ device })
+        .sort({ createdAt: 'desc' })
+        .limit(Number(limit))
+        .exec();
+    return Response.json({ code: 200, message: 'ok', data });
+}
 
-    return await fetch(`http://localhost:8080/api/data?device=${device}&limit=${limit}`).then(r => r.json());
+export async function POST(request: NextRequest) {
+    try {
+        const { device, light, moisture } = await request.json();
+        const now = new Date();
+        const data = new Data({
+            device,
+            light,
+            moisture,
+            createdAt: now,
+            updatedAt: now,
+        });
+        await data.save();
+        return Response.json({ code: 200, message: 'ok' });
+    } catch (error) {
+        return Response.json({ code: 400, message: 'internal error' });
+    }
 }

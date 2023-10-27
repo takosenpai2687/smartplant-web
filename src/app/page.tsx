@@ -48,13 +48,11 @@ export default function Home() {
     // TODO: decide how to determine status
     const [lightStatus, setLightsStatus] = React.useState<string>("Great");
     const [moistStatus, setMoistStatus] = React.useState<string>("Great");
-    const deviceName = "test-oct-18";
+    const deviceName = "test-oct-27";
 
     const fetchData = async () => {
         const data: any[] = await axios
-            .get(
-                `http://localhost:8080/api/data?device=${deviceName}&limit=${limit}`
-            )
+            .get(`/api/data?device=${deviceName}&limit=${limit}`)
             .then((r) => r.data.data);
         setLights(data.map((d) => d.light));
         setMoistures(data.map((d) => d.moisture));
