@@ -18,7 +18,7 @@ const DataSchema = new Schema({
     timestamps: true,
 });
 
-var Data;
+var Data: any;
 
 if (mongoose.models.Data) {
     Data = model('Data');
