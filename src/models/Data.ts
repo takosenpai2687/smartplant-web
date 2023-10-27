@@ -1,5 +1,5 @@
 
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 
 const DataSchema = new Schema({
     device: {
@@ -18,6 +18,12 @@ const DataSchema = new Schema({
     timestamps: true,
 });
 
-const Data = model('Data', DataSchema);
+var Data;
+
+if (mongoose.models.Data) {
+    Data = model('Data');
+} else {
+    Data = model('Data', DataSchema);
+}
 
 export default Data;
