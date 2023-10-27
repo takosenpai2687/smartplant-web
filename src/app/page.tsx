@@ -67,7 +67,8 @@ export default function Home() {
     };
 
     useEffect(() => {
-        setInterval(fetchData, 1000);
+        let fetchDataInt = setInterval(fetchData, 1000);
+        return () => clearInterval(fetchDataInt);
     }, []);
 
     return (

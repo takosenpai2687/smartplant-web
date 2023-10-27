@@ -173,7 +173,7 @@ const Configuration = () => {
                                 <div>
                                     <FormControl id="sunlight-exposure-label">
                                         Select the Ideal Soil Moisture (Scale of
-                                        0-100)
+                                        10-100)
                                     </FormControl>
                                     <Slider
                                         getAriaLabel={() =>
