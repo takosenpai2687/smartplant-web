@@ -1,0 +1,15 @@
+version: '3.8'  # if you change this, update the 'version' in docker-compose.yml file
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"  # Expose MongoDB's default port
+    volumes:
+      - mongo-data:/data/db  # Persistent volume storage for MongoDB data
+
+volumes:
+  mongo-data:
+
+# docker run --name some-mongo -d -p 27017:27017 mongo
+
